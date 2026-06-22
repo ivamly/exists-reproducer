@@ -1,20 +1,22 @@
-package ru.ivamly.exists.reproducer;
+package ru.ivamly.exists.reproducer.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
+import java.util.Set;
+
 @Entity
-@Table(name = "Users")
-public class User {
+@Table(name = "Roles")
+public class Role {
     @Id
     private Long id;
     private String name;
-    @ManyToOne
-    private Role role;
+    @OneToMany(mappedBy = "role")
+    private Set<User> users;
 
-    public User() {
+    public Role() {
     }
 
     public Long getId() {
@@ -31,13 +33,5 @@ public class User {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public Role getRole() {
-        return role;
-    }
-
-    public void setRole(Role role) {
-        this.role = role;
     }
 }
