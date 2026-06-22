@@ -37,7 +37,7 @@ class ExistsTest {
     }
 
     @Test
-    void tst() {
+    void checkExistsBeforeAndAfterSave() {
         inTransaction(entityManager -> {
             assertFalse(entityManager.createQuery(QUERY, Boolean.class)
                     .setParameter("id", role.getId())
